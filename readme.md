@@ -1,6 +1,6 @@
 # Django-REST-framework example project
 
-Как начать работу:
+## Как начать работу
 
 ```
 git clone https://github.com/volodya-leveryev/msa1-drf.git
@@ -23,3 +23,14 @@ python manage.py migrate
 ```
 python manage.py createsuperuser
 ```
+
+## Задание
+
+Создать модель StudyGroup со следующими полями:
+
+- name — название группы, строка длиной не более 50 символов
+- year — год поступления, целое число
+
+Добавить в студента ссылку на группу в которой он учится.
+
+Внести соответствующие изменения в файлы `admin.py`, `urls.py`, `viewsets.py`, `serializers.py` и т.п.

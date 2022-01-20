@@ -3,6 +3,7 @@ venv/
 
 # Database
 db.sqlite3
+migrations/
 
 # Compiled files
 *.pyc

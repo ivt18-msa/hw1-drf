@@ -1,0 +1,8 @@
+# Libraries
+venv/
+
+# Database
+db.sqlite3
+
+# Compiled files
+*.pyc

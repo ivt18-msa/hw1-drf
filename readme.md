@@ -24,6 +24,13 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+Для запуска клиента по адресу [http://localhost:8888](http://localhost:8888):
+
+```
+cd client
+python -m http.server 8888
+```
+
 ## Задание
 
 Создать модель StudyGroup со следующими полями:

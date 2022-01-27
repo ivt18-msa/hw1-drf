@@ -17,5 +17,5 @@ class GradeSerializer(serializers.HyperlinkedModelSerializer):
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Student
-        fields = ['last_name', 'first_name', 'second_name', 'id_number', 'grade_set']
+        fields = ['id', 'last_name', 'first_name', 'second_name', 'id_number', 'grade_set']
         depth = 1

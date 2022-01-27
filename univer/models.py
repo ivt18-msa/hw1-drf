@@ -1,3 +1,4 @@
+from operator import mod
 from tabnanny import verbose
 from django.db import models
 
@@ -17,3 +18,28 @@ class Student(models.Model):
     class Meta:
         verbose_name = 'Студент'
         verbose_name_plural = 'Студенты'
+
+
+class Course(models.Model):
+    code = models.CharField('код', max_length=30)
+    name = models.CharField('название', max_length=50)
+
+    def __str__(self):
+        return self.code + ' ' + self.name
+
+    class Meta:
+        verbose_name = 'Дисциплина'
+        verbose_name_plural = 'Дисциплины'
+
+
+class Grade(models.Model):
+    student = models.ForeignKey('Student', on_delete=models.DO_NOTHING, verbose_name='студент')
+    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, verbose_name='дисциплина')
+    points = models.DecimalField(max_digits=5, decimal_places=1, verbose_name='балл БРС')
+
+    def __str__(self):
+        return str(self.course) + ': ' + str(self.student)
+
+    class Meta:
+        verbose_name = 'Оценка'
+        verbose_name_plural = 'Оценки'

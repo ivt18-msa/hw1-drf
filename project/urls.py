@@ -18,9 +18,11 @@ from django.urls import include, path
 
 from rest_framework import routers
 
-from univer.viewsets import StudentViewSet
+from univer.viewsets import CourseViewSet, GradeViewSet, StudentViewSet
 
 router = routers.DefaultRouter()
+router.register('courses', CourseViewSet)
+router.register('grades', GradeViewSet)
 router.register('students', StudentViewSet)
 
 urlpatterns = [

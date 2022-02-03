@@ -1,7 +1,10 @@
 from rest_framework.test import APITestCase
+from model_mommy import mommy
+
+from univer.models import Student
 
 
-class StudentApiTests(APITestCase):
+class StudentApiTests1(APITestCase):
     def test_get_students(self):
         res = self.client.get('/students/')
         self.assertEqual(res.status_code, 200)
@@ -25,3 +28,19 @@ class StudentApiTests(APITestCase):
         res = self.client.get('/students/')
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data['count'], 1)
+
+
+class StudentApiTests2(APITestCase):
+    def setUp(self):
+        self.student = mommy.make(Student)
+        return super().setUp()
+
+    def test_get_students(self):
+        res = self.client.get('/students/')
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data['count'], 1)
+        temp = res.data['results'][0]
+        self.assertEqual(temp['last_name'], self.student.last_name)
+        self.assertEqual(temp['first_name'], self.student.first_name)
+        self.assertEqual(temp['second_name'], self.student.second_name)
+        self.assertEqual(temp['id_number'], self.student.id_number)
